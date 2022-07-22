@@ -1,11 +1,11 @@
 package com.example.pesaFix.model;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -14,12 +14,16 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long loanId;
     private Long customerId;
-    private String date;
     private  int duration;
-    private  double amount;
+    private  double loanAmount;
     private int interest;
     private double outstandingAmount;
     private String status;
+    @CreationTimestamp
+    @CreatedDate
+    private LocalDateTime appliedOn;
+    private LocalDateTime approvedOn;
+    private LocalDateTime dueOn;
 
     public Long getLoanId() {
         return loanId;
@@ -37,14 +41,6 @@ public class Loan {
         this.customerId = customerId;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public int getDuration() {
         return duration;
     }
@@ -53,12 +49,12 @@ public class Loan {
         this.duration = duration;
     }
 
-    public double getAmount() {
-        return amount;
+    public double getLoanAmount() {
+        return loanAmount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setLoanAmount(double loanAmount) {
+        this.loanAmount = loanAmount;
     }
 
     public int getInterest() {
@@ -83,5 +79,29 @@ public class Loan {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public LocalDateTime getAppliedOn() {
+        return appliedOn;
+    }
+
+    public void setAppliedOn(LocalDateTime appliedOn) {
+        this.appliedOn = appliedOn;
+    }
+
+    public LocalDateTime getApprovedOn() {
+        return approvedOn;
+    }
+
+    public void setApprovedOn(LocalDateTime approvedOn) {
+        this.approvedOn = approvedOn;
+    }
+
+    public LocalDateTime getDueOn() {
+        return dueOn;
+    }
+
+    public void setDueOn(LocalDateTime dueOn) {
+        this.dueOn = dueOn;
     }
 }

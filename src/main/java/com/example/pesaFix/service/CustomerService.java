@@ -18,8 +18,11 @@ public class CustomerService {
     GeneralResponse generalResponse;
 
     public Object saveOrUpdate (Customer customer){
+        generalResponse=new GeneralResponse();
         try{
             System.out.println("entered try block");
+
+
         return customerRepository.save(customer);
 
         }catch (Exception e){
