@@ -49,19 +49,11 @@ public class Loan {
         this.duration = duration;
     }
 
-<<<<<<< HEAD
-    public double getAmount() {
-        return loanAmount;
-    }
-
-    public void setAmount(double loanAmount) {
-=======
     public double getLoanAmount() {
         return loanAmount;
     }
 
     public void setLoanAmount(double loanAmount) {
->>>>>>> pesafix_loan_logic
         this.loanAmount = loanAmount;
     }
 
