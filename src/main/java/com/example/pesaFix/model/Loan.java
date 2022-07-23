@@ -16,7 +16,7 @@ public class Loan {
     private Long customerId;
     private String date;
     private  int duration;
-    private  double amount;
+    private  double loanAmount;
     private int interest;
     private double outstandingAmount;
     private String status;
@@ -54,11 +54,11 @@ public class Loan {
     }
 
     public double getAmount() {
-        return amount;
+        return loanAmount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setAmount(double loanAmount) {
+        this.loanAmount = loanAmount;
     }
 
     public int getInterest() {
