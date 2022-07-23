@@ -6,6 +6,7 @@ import com.example.pesaFix.repository.LoanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -15,7 +16,20 @@ public class LoanService {
 
     GeneralResponse generalResponse;
     public Loan saveOrUpdate(Loan loan){
+         int interest=20;
+         int duration =30;
+        loan.setStatus("PENDING");
+        loan.setOutstandingAmount(loan.getLoanAmount()*interest/100+loan.getLoanAmount());
+        loan.setAppliedOn(LocalDateTime.now());
+        loan.setInterest(interest);
+        loan.setDuration(duration);
+
         return loanRepository.save(loan);
+
+
+
+
+
     }
     public Object getLoanById(Long id){
         generalResponse= new GeneralResponse();
