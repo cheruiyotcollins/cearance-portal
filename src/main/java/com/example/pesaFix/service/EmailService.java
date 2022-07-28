@@ -21,3 +21,4 @@
 //        SimpleMailMessage message = new SimpleMailMessage();
 //        message.setTo(to);
 //        message.setSubject(subject);
+//and the email notification is complete
