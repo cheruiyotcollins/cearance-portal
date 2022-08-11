@@ -1,4 +1,4 @@
-package com.example.pesaFix.model;
+package com.zetech.clearance.model;
 
 import java.io.Serializable;
 

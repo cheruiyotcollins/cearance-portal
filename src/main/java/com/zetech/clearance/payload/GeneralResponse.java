@@ -1,8 +1,6 @@
-package com.example.pesaFix.dao;
+package com.zetech.clearance.payload;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 public class GeneralResponse {

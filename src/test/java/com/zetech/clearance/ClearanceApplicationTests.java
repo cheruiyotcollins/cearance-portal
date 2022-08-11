@@ -1,10 +1,10 @@
-package com.example.pesaFix;
+package com.zetech.clearance;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PesaFixApplicationTests {
+class ClearanceApplicationTests {
 
 	@Test
 	void contextLoads() {

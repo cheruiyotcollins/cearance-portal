@@ -1,4 +1,4 @@
-package com.example.pesaFix.security;
+package com.zetech.clearance.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -41,6 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+    /*//*/
 
     @Bean
     @Override

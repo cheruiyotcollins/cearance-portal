@@ -1,10 +1,10 @@
-package com.example.pesaFix.controller;
+package com.zetech.clearance.controller;
 
 import java.util.Objects;
 
-import com.example.pesaFix.model.JwtRequest;
-import com.example.pesaFix.model.JwtResponse;
-import com.example.pesaFix.security.JwtTokenUtil;
+import com.zetech.clearance.model.JwtRequest;
+import com.zetech.clearance.model.JwtResponse;
+import com.zetech.clearance.security.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
