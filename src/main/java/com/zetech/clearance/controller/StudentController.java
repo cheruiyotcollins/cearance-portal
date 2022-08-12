@@ -2,6 +2,7 @@ package com.zetech.clearance.controller;
 
 import com.zetech.clearance.model.student.Student;
 import com.zetech.clearance.payload.GeneralResponse;
+import com.zetech.clearance.payload.GetStudentResponse;
 import com.zetech.clearance.payload.SaveStudentRequest;
 import com.zetech.clearance.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class StudentController {
         return studentService.findById(id);
     }
     @GetMapping("/list")
-    public List<Student> findAll(){
+    public List<GetStudentResponse> findAll(){
         return studentService.findAll();
     }
     @DeleteMapping("/deletebyid/{id}")

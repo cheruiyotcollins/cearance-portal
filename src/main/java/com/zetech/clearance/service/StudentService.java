@@ -9,6 +9,7 @@ import com.zetech.clearance.repository.student.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,11 +28,11 @@ public class StudentService {
     Student student;
     GetStudentResponse getStudentResponse;
 
-    public Object saveOrUpdate (SaveStudentRequest saveStudentRequest){
-        generalResponse=new GeneralResponse();
-        try{
+    public Object saveOrUpdate(SaveStudentRequest saveStudentRequest) {
+        generalResponse = new GeneralResponse();
+        try {
             System.out.println("entered try block");
-            student= new Student();
+            student = new Student();
             student.setCourse(saveStudentRequest.getCourse());
             student.setName(saveStudentRequest.getName());
             student.setRegNo(saveStudentRequest.getRegNo());
@@ -41,48 +42,63 @@ public class StudentService {
 
             return studentRepository.save(student);
 
-        }catch (Exception e){
-            generalResponse.status= "failed";
-            generalResponse.description="Error Saving ";
+        } catch (Exception e) {
+            generalResponse.status = "failed";
+            generalResponse.description = "Error Saving ";
             System.out.println("entered catch block");
-            return  generalResponse;
+            return generalResponse;
         }
     }
 
 
-    public Object findById (Long id){
+    public Object findById(Long id) {
         generalResponse = new GeneralResponse();
-        try{
-            student= new Student();
-            student=studentRepository.findById(id).get();
-            getStudentResponse= new GetStudentResponse();
-            getStudentResponse.setCourse(student.getCourse());
-            getStudentResponse.setName(student.getName());
-            getStudentResponse.setRegNo(student.getRegNo());
-            getStudentResponse.setDepartment(student.getDepartment().getDepartmentName());
-            return getStudentResponse;
+        try {
+            return setStudentResponse(studentRepository.findById(id).get());
 
-        }catch (Exception e){
-            generalResponse.status="failed";
-            generalResponse.description="student not found";
+        } catch (Exception e) {
+            generalResponse.status = "failed";
+            generalResponse.description = "student not found";
             return generalResponse;
         }
 
     }
-    public List<Student> findAll(){
 
-        return studentRepository.findAll();
+
+    public List<GetStudentResponse> findAll() {
+
+        List<GetStudentResponse> allStudents = new ArrayList<>();
+        studentRepository.findAll().forEach(student -> {
+
+                  allStudents.add(setStudentResponse(student));
+
+        });
+
+        return allStudents;
+
     }
-    public GeneralResponse deleteById(Long id){
+
+    public GetStudentResponse setStudentResponse(Student student){
+        getStudentResponse = new GetStudentResponse();
+
+        getStudentResponse.setCourse(student.getCourse());
+        getStudentResponse.setId(student.getId());
+        getStudentResponse.setName(student.getName());
+        getStudentResponse.setRegNo(student.getRegNo());
+        getStudentResponse.setDepartment(student.getDepartment().getDepartmentName());
+        return getStudentResponse;
+    }
+
+    public GeneralResponse deleteById(Long id) {
         generalResponse = new GeneralResponse();
         try {
             studentRepository.deleteById(id);
-            generalResponse.status="success";
-            generalResponse.description="student deleted successfully";
+            generalResponse.status = "success";
+            generalResponse.description = "student deleted successfully";
 
-        }catch (Exception e){
-            generalResponse.status="failed";
-            generalResponse.description="student deletion failed";
+        } catch (Exception e) {
+            generalResponse.status = "failed";
+            generalResponse.description = "student deletion failed";
 
         }
         return generalResponse;

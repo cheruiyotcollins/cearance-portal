@@ -2,7 +2,7 @@ package com.zetech.clearance.payload;
 
 public class GetStudentResponse {
 
-
+    private Long id;
     private String regNo;
     private String name;
     private String course;
@@ -38,5 +38,13 @@ public class GetStudentResponse {
 
     public void setDepartment(String department) {
         this.department = department;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
