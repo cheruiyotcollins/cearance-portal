@@ -2,8 +2,8 @@ package com.zetech.clearance.controller;
 
 import java.util.Objects;
 
-import com.zetech.clearance.model.JwtRequest;
-import com.zetech.clearance.model.JwtResponse;
+import com.zetech.clearance.payload.JwtRequest;
+import com.zetech.clearance.payload.JwtResponse;
 import com.zetech.clearance.security.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

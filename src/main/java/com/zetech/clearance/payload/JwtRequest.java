@@ -1,4 +1,4 @@
-package com.zetech.clearance.model;
+package com.zetech.clearance.payload;
 
 import java.io.Serializable;
 
