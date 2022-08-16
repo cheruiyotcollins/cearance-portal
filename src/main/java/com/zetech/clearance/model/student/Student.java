@@ -2,6 +2,7 @@ package com.zetech.clearance.model.student;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.zetech.clearance.model.department.Course;
 import com.zetech.clearance.model.department.Department;
 import com.zetech.clearance.model.finance.Finance;
 import com.zetech.clearance.model.graduation.GraduationList;
@@ -30,15 +31,18 @@ public class Student implements Serializable {
     @Size(max = 40)
     private String name;
 
-    @NotBlank
-    @Size(max = 100)
-    private String course;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "department_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Department department;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Course course;
 
     @OneToOne(mappedBy = "student",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Finance finance;
@@ -49,7 +53,6 @@ public class Student implements Serializable {
     @OneToOne(mappedBy = "student",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 
     private GraduationList graduationList;
-
 
     public Long getId() {
         return id;
@@ -75,20 +78,20 @@ public class Student implements Serializable {
         this.name = name;
     }
 
-    public String getCourse() {
-        return course;
-    }
-
-    public void setCourse(String course) {
-        this.course = course;
-    }
-
     public Department getDepartment() {
         return department;
     }
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     public Finance getFinance() {

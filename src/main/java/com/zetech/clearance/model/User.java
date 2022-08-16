@@ -32,9 +32,6 @@ public class User  {
     @Size(max = 15)
     private String username;
 
-    @NotBlank
-    @Size(max = 14)
-    private String phone;
 
     @NaturalId
     @NotBlank
@@ -46,27 +43,30 @@ public class User  {
     @Size(max = 100)
     private String password;
 
+//
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinColumn(name="role_id")
+//    private Set<Role> roles = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name="role_id")
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(name = "user_roles",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "role_id"))
-//    private Set<Role> roles = new HashSet<>();
+    private Long roleId;
 
     public User() {
 
     }
 
-    public User(String name, String username,String phone, String email, String password) {
+    public User(String name, String username, String email, String password,Long roleId) {
         this.name = name;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.phone=phone;
+        this.roleId=roleId;
+
     }
 
     public Long getId() {
@@ -114,16 +114,15 @@ public class User  {
     }
 
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 }

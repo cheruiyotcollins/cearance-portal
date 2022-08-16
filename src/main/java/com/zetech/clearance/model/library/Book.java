@@ -1,5 +1,7 @@
 package com.zetech.clearance.model.library;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -14,15 +16,10 @@ public class Book {
 
     @NotBlank
     private String bookName;
+    @NotBlank
+    private String author;
 
-    @NotNull
-    private Double price;
-
-    @OneToOne(mappedBy = "book",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private Library library;
-
-
-    public Long getId() {
+     public Long getId() {
         return id;
     }
 
@@ -38,19 +35,13 @@ public class Book {
         this.bookName = bookName;
     }
 
-    public Double getPrice() {
-        return price;
+     public String getAuthor() {
+        return author;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public Library getLibrary() {
-        return library;
-    }
 
-    public void setLibrary(Library library) {
-        this.library = library;
-    }
 }

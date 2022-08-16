@@ -4,6 +4,7 @@ import com.zetech.clearance.model.student.Student;
 import com.zetech.clearance.payload.GeneralResponse;
 import com.zetech.clearance.payload.GetStudentResponse;
 import com.zetech.clearance.payload.SaveStudentRequest;
+import com.zetech.clearance.repository.department.CourseRepository;
 import com.zetech.clearance.repository.department.DepartmentRepository;
 import com.zetech.clearance.repository.student.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class StudentService {
 
     @Autowired
     DepartmentRepository departmentRepository;
+    @Autowired
+    CourseRepository courseRepository;
 
 
     @Autowired
@@ -33,7 +36,7 @@ public class StudentService {
         try {
             System.out.println("entered try block");
             student = new Student();
-            student.setCourse(saveStudentRequest.getCourse());
+            student.setCourse(courseRepository.findById(saveStudentRequest.getCourse()).get());
             student.setName(saveStudentRequest.getName());
             student.setRegNo(saveStudentRequest.getRegNo());
             student.setDepartment(departmentRepository.findById(saveStudentRequest.getDepartmentId()).get());
@@ -81,7 +84,7 @@ public class StudentService {
     public GetStudentResponse setStudentResponse(Student student){
         getStudentResponse = new GetStudentResponse();
 
-        getStudentResponse.setCourse(student.getCourse());
+        getStudentResponse.setCourse(student.getCourse().getCourseName());
         getStudentResponse.setId(student.getId());
         getStudentResponse.setName(student.getName());
         getStudentResponse.setRegNo(student.getRegNo());

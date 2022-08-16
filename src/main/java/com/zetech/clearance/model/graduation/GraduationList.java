@@ -2,31 +2,34 @@ package com.zetech.clearance.model.graduation;
 
 import com.zetech.clearance.model.department.Department;
 import com.zetech.clearance.model.student.Student;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class GraduationList {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "gown_id")
-    private Gown gown;
+    private ClearanceStatus libraryClearance;
 
-    private String library_clearance;
+    private ClearanceStatus financeClearance;
 
-    private String finance_clearance;
+    private ClearanceStatus gownIssuance;
 
-    private String gown_issuance;
-
-    private String gown_clearance;
-
+    private ClearanceStatus gownClearance;
+    @CreationTimestamp
+    @CreatedDate
+    private LocalDateTime gownIssuedAt;
+    @CreationTimestamp
+    @CreatedDate
+    private LocalDateTime gownReturnDate;
 
     public Long getId() {
         return id;
@@ -44,43 +47,52 @@ public class GraduationList {
         this.student = student;
     }
 
-    public Gown getGown() {
-        return gown;
+    public ClearanceStatus getLibraryClearance() {
+        return libraryClearance;
     }
 
-    public void setGown(Gown gown) {
-        this.gown = gown;
+    public void setLibraryClearance(ClearanceStatus libraryClearance) {
+        this.libraryClearance = libraryClearance;
     }
 
-    public String getLibrary_clearance() {
-        return library_clearance;
+    public ClearanceStatus getFinanceClearance() {
+        return financeClearance;
     }
 
-    public void setLibrary_clearance(String library_clearance) {
-        this.library_clearance = library_clearance;
+    public void setFinanceClearance(ClearanceStatus financeClearance) {
+        this.financeClearance = financeClearance;
     }
 
-    public String getFinance_clearance() {
-        return finance_clearance;
+    public ClearanceStatus getGownIssuance() {
+        return gownIssuance;
     }
 
-    public void setFinance_clearance(String finance_clearance) {
-        this.finance_clearance = finance_clearance;
+    public void setGownIssuance(ClearanceStatus gownIssuance) {
+        this.gownIssuance = gownIssuance;
     }
 
-    public String getGown_issuance() {
-        return gown_issuance;
+    public ClearanceStatus getGownClearance() {
+        return gownClearance;
     }
 
-    public void setGown_issuance(String gown_issuance) {
-        this.gown_issuance = gown_issuance;
+    public void setGownClearance(ClearanceStatus gownClearance) {
+        this.gownClearance = gownClearance;
     }
 
-    public String getGown_clearance() {
-        return gown_clearance;
+    public LocalDateTime getGownIssuedAt() {
+        return gownIssuedAt;
     }
 
-    public void setGown_clearance(String gown_clearance) {
-        this.gown_clearance = gown_clearance;
+    public void setGownIssuedAt(LocalDateTime gownIssuedAt) {
+        this.gownIssuedAt = gownIssuedAt;
+    }
+
+    public LocalDateTime getGownReturnDate() {
+        return gownReturnDate;
+    }
+
+    public void setGownReturnDate(LocalDateTime gownReturnDate) {
+        this.gownReturnDate = gownReturnDate;
     }
 }
+

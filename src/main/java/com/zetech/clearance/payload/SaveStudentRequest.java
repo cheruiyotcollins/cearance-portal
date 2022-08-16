@@ -2,7 +2,7 @@ package com.zetech.clearance.payload;
 
 public class SaveStudentRequest {
    private String name;
-   private String course;
+   private Long course;
    private String regNo;
    private Long departmentId;
 
@@ -14,11 +14,11 @@ public class SaveStudentRequest {
         this.name = name;
     }
 
-    public String getCourse() {
+    public Long getCourse() {
         return course;
     }
 
-    public void setCourse(String course) {
+    public void setCourse(Long course) {
         this.course = course;
     }
 

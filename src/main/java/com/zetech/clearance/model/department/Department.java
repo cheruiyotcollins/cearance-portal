@@ -1,10 +1,15 @@
 package com.zetech.clearance.model.department;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.zetech.clearance.model.student.Student;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "departments")
@@ -18,11 +23,21 @@ public class Department {
     @Size(max = 60)
     private String departmentName;
 
-    @OneToOne(
+    @OneToMany(
             mappedBy = "department",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
-    private Student student;
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private List<Student> student =new ArrayList<>();
+
+    @OneToMany(
+            mappedBy = "department",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private List<Course> course =new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -40,11 +55,19 @@ public class Department {
         this.departmentName = departmentName;
     }
 
-    public Student getStudent() {
+    public List<Student> getStudent() {
         return student;
     }
 
-    public void setStudent(Student student) {
+    public void setStudent(List<Student> student) {
         this.student = student;
+    }
+
+    public List<Course> getCourse() {
+        return course;
+    }
+
+    public void setCourse(List<Course> course) {
+        this.course = course;
     }
 }

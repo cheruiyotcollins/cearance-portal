@@ -21,6 +21,7 @@ public class Finance {
 
     @NotNull
     private Double outstandingFees;
+    private Double graduationFee;
 
     public Long getId() {
         return id;
@@ -44,5 +45,13 @@ public class Finance {
 
     public void setOutstandingFees(Double outstandingFees) {
         this.outstandingFees = outstandingFees;
+    }
+
+    public Double getGraduationFee() {
+        return graduationFee;
+    }
+
+    public void setGraduationFee(Double graduationFee) {
+        this.graduationFee = graduationFee;
     }
 }

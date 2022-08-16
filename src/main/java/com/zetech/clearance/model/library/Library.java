@@ -2,8 +2,11 @@ package com.zetech.clearance.model.library;
 
 import com.zetech.clearance.model.department.Department;
 import com.zetech.clearance.model.student.Student;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="library_records")
@@ -12,13 +15,19 @@ public class Library {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @CreationTimestamp
+    @CreatedDate
+    private LocalDateTime issuedDate;
+
+//    @CreationTimestamp
+//    @CreatedDate
+    private LocalDateTime expectedReturnDate;
+
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "book_id", nullable = false)
-    private Book book;
+    private Long bookId;
 
 
     public Long getId() {
@@ -37,11 +46,27 @@ public class Library {
         this.student = student;
     }
 
-    public Book getBook() {
-        return book;
+    public Long getBookId() {
+        return bookId;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
+    }
+
+    public LocalDateTime getIssuedDate() {
+        return issuedDate;
+    }
+
+    public void setIssuedDate(LocalDateTime issuedDate) {
+        this.issuedDate = issuedDate;
+    }
+
+    public LocalDateTime getExpectedReturnDate() {
+        return expectedReturnDate;
+    }
+
+    public void setExpectedReturnDate(LocalDateTime expectedReturnDate) {
+        this.expectedReturnDate = expectedReturnDate;
     }
 }
