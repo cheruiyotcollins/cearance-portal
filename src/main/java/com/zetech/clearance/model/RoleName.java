@@ -1,10 +1,12 @@
 package com.zetech.clearance.model;
 
 public enum  RoleName {
-    ROLE_STUDENT,
+    UNKNOWN,
     ROLE_ADMIN,
+    ROLE_STUDENT,
     ROLE_HOD,
     ROLE_LIBRARIAN,
     ROLE_FINANCE,
-    ROLE_GOWN
+    ROLE_RECORDS,
+    ROLE_REGISTRAR,
 }

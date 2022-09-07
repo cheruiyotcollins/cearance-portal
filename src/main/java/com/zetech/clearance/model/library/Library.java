@@ -19,8 +19,6 @@ public class Library {
     @CreatedDate
     private LocalDateTime issuedDate;
 
-//    @CreationTimestamp
-//    @CreatedDate
     private LocalDateTime expectedReturnDate;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)

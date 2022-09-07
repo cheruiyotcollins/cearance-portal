@@ -1,10 +1,10 @@
 package com.zetech.clearance.controller;
 
-import com.zetech.clearance.payload.GeneralResponse;
-import com.zetech.clearance.payload.GownRequest;
-import com.zetech.clearance.payload.GraduationListResponse;
+import com.zetech.clearance.model.hod.GraduationList;
+import com.zetech.clearance.payload.*;
 import com.zetech.clearance.service.GraduationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,10 +27,19 @@ public class GraduationListController {
         graduationService.getGraduationList().forEach(a->{
 
         });
-
-
         return graduationService.getGraduationList();
     }
+
+    @GetMapping("/gown/issued/list")
+    public List<IssuedGownsResponse> studentsIssuedGowns(){
+       return graduationService.getIssuedGowns();
+    }
+
+    @GetMapping("/gown/cleared/list")
+    public List<IssuedGownsResponse> clearedGowns(){
+        return graduationService. getReturnedGowns();
+    }
+
 
     @GetMapping("/findbyid/{id}")
     public Object getGraduationById(@PathVariable Long id){
@@ -38,11 +47,39 @@ public class GraduationListController {
     }
 
     @GetMapping("/gown/issuance/{id}")
-    public GeneralResponse issueGown(@PathVariable Long id){
+    public ResponseEntity<?> issueGown(@PathVariable Long id){
        return graduationService.gownIssuance(id);
     }
     @GetMapping("/gown/clearance/{id}")
-    public GeneralResponse clearGown(@PathVariable Long id){
+    public ResponseEntity<?> clearGown(@PathVariable Long id){
          return graduationService.gownClearance(id);
     }
+
+     @GetMapping("/certificate/issuance/{id}")
+    public ResponseEntity<?> certificateClearance(@PathVariable Long id){
+
+          return graduationService.certificateClearance(id);
+    }
+
+    @PostMapping("/gown/fine/payment")
+    public ResponseEntity<?> gownFinePayment(@RequestBody PaymentRequest payment){
+
+        return graduationService.gownFinePayment(payment);
+    }
+    @GetMapping("/certificate/cleared/list")
+    public List<IssuedGownsResponse> getIssuedCertificates(){
+        return graduationService.getIssuedCertificates();
+    }
+
+
+    @GetMapping("/student/cleared/list")
+    public List<IssuedGownsResponse> getStudentsClearedForGraduation(){
+        return graduationService.getStudentsCleared();
+    }
+
+
+
+
+
+
 }

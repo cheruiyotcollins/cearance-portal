@@ -19,7 +19,6 @@ public class Finance {
     @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
-    @NotNull
     private Double outstandingFees;
     private Double graduationFee;
 

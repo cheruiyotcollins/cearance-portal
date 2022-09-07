@@ -7,6 +7,15 @@ public class GetStudentResponse {
     private String name;
     private String course;
     private String department;
+    private String nameConfirmation;
+
+    public String getNameConfirmation() {
+        return nameConfirmation;
+    }
+
+    public void setNameConfirmation(String nameConfirmation) {
+        this.nameConfirmation = nameConfirmation;
+    }
 
     public String getRegNo() {
         return regNo;

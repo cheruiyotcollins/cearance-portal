@@ -18,9 +18,29 @@ public class SignUpRequest {
     @Email
     private String email;
 
+    private String roleId;
+
+
     @NotBlank
     @Size(min = 6, max = 20)
     private String password;
+    private String regNo;
+
+    public String getRegNo() {
+        return regNo;
+    }
+
+    public void setRegNo(String regNo) {
+        this.regNo = regNo;
+    }
+
+    public String getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
+    }
 
     public String getName() {
         return name;

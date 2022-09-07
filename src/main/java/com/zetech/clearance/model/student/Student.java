@@ -2,10 +2,11 @@ package com.zetech.clearance.model.student;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.zetech.clearance.model.User;
 import com.zetech.clearance.model.department.Course;
 import com.zetech.clearance.model.department.Department;
 import com.zetech.clearance.model.finance.Finance;
-import com.zetech.clearance.model.graduation.GraduationList;
+import com.zetech.clearance.model.hod.GraduationList;
 import com.zetech.clearance.model.library.Library;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -53,6 +54,16 @@ public class Student implements Serializable {
     @OneToOne(mappedBy = "student",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 
     private GraduationList graduationList;
+
+   private Long userId;
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
     public Long getId() {
         return id;

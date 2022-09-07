@@ -1,0 +1,30 @@
+.home {
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;    
+    color: rgba(46, 6, 126, 0.65);
+}
+.main-home {
+  text-align: center;
+  padding: 20px;    
+  color: rgba(46, 6, 126, 0.65);
+}
+
+.title {
+  font-size: 28px;
+  text-align: center;
+  padding: 20px;    
+  color: rgba(46, 6, 126, 0.65);
+}
+
+.backgroundImage {
+    background-image: 
+    url(
+  "./backgroundImage.PNG");
+    background-size: "cover";
+    height: 100vh;
+    margin-top: -70px;
+    font-size:29px;
+    color: rgba(46, 6, 126, 0.65);
+    background-repeat:no-repeat; 
+  }

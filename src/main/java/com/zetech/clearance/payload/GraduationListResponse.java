@@ -1,6 +1,5 @@
 package com.zetech.clearance.payload;
 
-import com.zetech.clearance.model.graduation.ClearanceStatus;
 import lombok.Data;
 
 @Data
@@ -15,6 +14,7 @@ public class GraduationListResponse {
     private String gownIssuance;
 
     private String gownClearance;
+    private String certificateIssuance;
 
 
     public Long getId() {
@@ -71,5 +71,13 @@ public class GraduationListResponse {
 
     public void setGownClearance(String gownClearance) {
         this.gownClearance = gownClearance;
+    }
+
+    public String getCertificateIssuance() {
+        return certificateIssuance;
+    }
+
+    public void setCertificateIssuance(String certificateIssuance) {
+        this.certificateIssuance = certificateIssuance;
     }
 }

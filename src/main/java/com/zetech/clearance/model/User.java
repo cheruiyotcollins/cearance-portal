@@ -1,6 +1,9 @@
 package com.zetech.clearance.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.zetech.clearance.model.hod.GraduationList;
+import com.zetech.clearance.model.student.Student;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
@@ -43,7 +46,8 @@ public class User  {
     @Size(max = 100)
     private String password;
 
-//
+
+   //
 //    @ManyToMany(fetch = FetchType.LAZY)
 //    @JoinColumn(name="role_id")
 //    private Set<Role> roles = new HashSet<>();

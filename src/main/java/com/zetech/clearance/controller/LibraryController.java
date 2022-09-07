@@ -5,8 +5,10 @@ import com.zetech.clearance.payload.GeneralResponse;
 import com.zetech.clearance.payload.IssueBookRequest;
 import com.zetech.clearance.payload.IssueBookResponse;
 import com.zetech.clearance.repository.library.BookRepository;
+import com.zetech.clearance.service.EmailService;
 import com.zetech.clearance.service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,11 +24,11 @@ public class LibraryController {
     BookRepository bookRepository;
     GeneralResponse generalResponse;
 
+
     @PostMapping("/book/issue")
-    public GeneralResponse issueBook(@RequestBody IssueBookRequest issueBookRequest){
-       System.out.println(issueBookRequest.getBookId());
-        System.out.println(issueBookRequest.getDuration());
-        System.out.println(issueBookRequest.getRegNo());
+    public ResponseEntity<?> issueBook(@RequestBody IssueBookRequest issueBookRequest){
+
+
         return libraryService.addLibraryRecord(issueBookRequest);
 
 
@@ -43,6 +45,15 @@ public class LibraryController {
         return bookRepository.findAll();
     }
 
+    @GetMapping("/student/book/{id}")
+    public ResponseEntity<?>  getIssuanceByID(@PathVariable Long id) {
+
+        return libraryService.getLibraryRecordByStudentId(id);
+
+    }
+
+
+
     @PostMapping("/book/save")
     public GeneralResponse saveBook(@RequestBody Book book){
          generalResponse=new GeneralResponse();
@@ -57,20 +68,21 @@ public class LibraryController {
         return generalResponse;
     }
 
-    @GetMapping("/findbyid/{id}")
-    public IssueBookResponse getLibraryById(@PathVariable Long id){
 
-        return libraryService.getLibraryRecordById(id);
-    }
+         @GetMapping("/findbyid/{id}")
+        public IssueBookResponse getLibraryById(@PathVariable Long id){
+
+           return libraryService.getLibraryRecordById(id);
+      }
 
     @GetMapping("/student/clearance/{id}")
-    public GeneralResponse clearStudent(@PathVariable Long id){
+    public ResponseEntity<?> clearStudent(@PathVariable Long id){
 
         return libraryService.clearStudent(id);
     }
 
-    @GetMapping("/clear/{id}")
-    public void  clearLibrary(@PathVariable Long id){
-        libraryService.clearStudent(id);
+    @GetMapping("/student/book/clearance/{id}")
+    public ResponseEntity<?>  clearIssuedBooks(@PathVariable Long id){
+       return libraryService.clearIssuedBooks(id);
     }
 }

@@ -3,7 +3,7 @@ package com.zetech.clearance.payload;
 public class IssueBookResponse {
 
     private Long id;
-    private String StudentName;
+    private String studentName;
     private String regNo;
     private String issuedDate;
     private String expectedReturnDate;
@@ -19,11 +19,11 @@ public class IssueBookResponse {
     }
 
     public String getStudentName() {
-        return StudentName;
+        return studentName;
     }
 
     public void setStudentName(String studentName) {
-        StudentName = studentName;
+        this.studentName = studentName;
     }
 
     public String getRegNo() {
