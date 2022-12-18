@@ -1,0 +1,86 @@
+.styled-table{
+    border-collapse:collapse;
+    margin: auto;
+    font-size: 0.8em;
+    font-family: sans-serif;
+    max-width: 1100px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    align-content: center;
+}
+
+.styled-table thead tr {
+    /* background-color: rgb(8, 20, 59); */
+    background-color: rgb(27, 50, 127); 
+    color: deepskyblue;
+    text-align: left;
+}
+.styled-heading{
+    text-align: center;
+    color: deepskyblue;
+}
+
+.styled-table th,
+.styled-table td{
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.336);
+}
+
+.styled-table tbody tr:nth-of-type(even)
+{
+    background-color: white;
+}
+
+.styled-table tbody tr:last-of-type{
+    border-bottom: 2px solid #009879;
+}
+
+.btn {
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.btn-edit{
+    background-color: yellow;
+}
+
+.btn-delete{
+    background-color: red;
+}
+
+.btn-view{
+    background-color: green;
+}
+
+.button-10 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    border-radius: 6px;
+    border: none;
+  
+    color: #fff;
+    background: linear-gradient(180deg, #4B91F7 0%, #367AF6 100%);
+     background-origin: border-box;
+    box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-10:focus {
+    box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+    outline: 0;
+  }
